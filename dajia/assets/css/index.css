@@ -1,0 +1,457 @@
+@import './global.css';
+/*@mixin cover(){
+	position:absolute; left:0; top:0; right:0; bottom:0;
+}
+$imgurl:../;
+$inputcolorS:#fff;
+$inputcolorM:#626262;
+$inputcolorL:#71b35c;
+.am_css{transition:all 0.3s ease-in-out; -webkit-transition:all 0.3s ease-in-out;}
+.aligncenter{text-align:center;}
+@mixin mc($bg,$pictype:png,$left:0,$top:0){
+	background:url($(imgurl)img/$bg.$pictype) no-repeat 0 0 /cover;
+	width:width('$(imgurl)img/$bg.$pictype');
+	height:height('$(imgurl)img/$bg.$pictype');
+	position:absolute;
+	top:$(top)px;
+	left:$(left)px;
+}
+@mixin btn($width,
+	$height,
+	$bgcolor,
+	$radius,
+	$position,
+	$left,
+	$top,
+	$leterspacing){
+	width:$(width)px;
+	height:$(height)px;
+	background-color:$bgcolor;
+	border-radius:$(radius)px;
+	position:$position;
+	left:$(left)px;
+	top:$(top)px;
+	color:#fff;
+	line-height:$(height)px;
+	font-size:36px;
+	letter-spacing:$(leterspacing)px;
+	text-align:center;
+}
+@mixin input($width,
+	$height,
+	$lineheight,
+	$bgcolor,
+	$position,
+	$left,
+	$top,
+	$fontsize){
+	width:$(width)px;
+	height:$(height)px;
+	background-color:$bgcolor;
+	border:none;
+	position:$position;
+	left:$(left)px;
+	top:$(top)px;
+	color:#fff;
+	line-height:$(lineheight)px;
+	font-size:$(fontsize)px;
+	text-align:left;
+}
+@mixin avatar($width,
+	$height,
+	$position,
+	$left,
+	$top){
+	width:$(width)px;
+	height:$(height)px;
+	position:$position;
+	left:$(left)px;
+	top:$(top)px;
+}*/
+
+
+/*********加载页面css********/
+
+@mixin centerfont($top,$fontsize,$lineheight,$color){
+	position: absolute;
+	left: 0;
+	top:$(top)px;
+	width: 100%;
+	text-align:center;
+	font-size: $(fontsize)px;
+	line-height: $(lineheight)px;
+	color: $color;
+}
+
+
+/*<div class="loading">
+    <div class="loading-text-wrap">
+        <div class="text">建议在WIFI下观看，正在加载中...</div>
+        <div class="percent"></div>
+    </div>
+    <div class="cloud"></div>
+    <div class="cp">出品：xxx公司出品</div>
+</div>*/
+
+
+.loading{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #f3f2ee;
+	.loading-text-wrap{
+		background: url(../img/loading_bg.png) no-repeat 0 0 /cover;
+		width: width(../img/loading_bg.png);
+		height: height(../img/loading_bg.png);
+		position: absolute;
+		left: 0;
+		top: 260px;
+		.text{
+			@include centerfont(333,18,34,#7f7f7f);
+			/*position: absolute;
+			left: 0;
+			top:333px; 
+			width: 100%;
+			text-align: center;
+			font-size: 18px;
+			line-height: 34px;
+			color: #7f7f7f;*/
+		}
+		.percent{
+			@include centerfont(367,36,60,#5d5d5d);
+			/*position: absolute;
+			left: 0;
+			top: 367px;
+			width: 100%;
+			text-align: center;
+			font-size: 36px;
+			line-height: 60px;
+			color: #5d5d5d;*/
+		}
+	}
+	.cloud{
+		position: absolute;
+		left: 0;
+		top: 530px;
+		background: url(../img/loading_cloud.png);
+		background-repeat: no-repeat;
+		background-position: 0 0;
+		background-size: cover;
+		width: width(../img/loading_cloud.png);
+		height: height(../img/loading_cloud.png);
+	}
+	.cp{
+		position: absolute;
+		left: 0;
+		bottom: 22px;
+		font-size: 20px;
+		color: #707070;
+		width: 100%;
+		text-align: center;
+	}
+}
+
+
+@keyframes coverTextAnimation{
+	0%{height: 0px}
+	10%{height: 100px}
+	30%{height: 200px}
+	70%{height: 480px}
+	100%{height: 638px}
+}
+
+@keyframes personShakeAnimation{
+	100%{background-position: -572px 0}
+}
+
+.item-wrap{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	ul{
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		transition: all ease-in-out 1.5s;
+	}
+	li{
+		position: relative;
+		width: 100%;
+		height: 100%;
+	}
+	.cover{
+		display: none;
+		background: url(../img/cover_bg.png) no-repeat 0 0 /cover;
+		.cover-text{
+			background: url(../img/cover_text.png);
+			background-repeat: no-repeat;
+			background-position: 0 0;
+			background-size: cover;
+			width: width(../img/cover_text.png);
+			height: height(../img/cover_text.png);
+			position: absolute;
+			left: 150px;
+			top:250px;
+			animation: coverTextAnimation 8s linear;
+		}
+	}
+	.choose{
+		display: none;
+		background:url(../img/choose_bg.png) no-repeat 0 0 /cover;
+		.choose-text{
+			p{
+				position: absolute;
+				left: 54px;
+				top: 250px;
+				width: 550px;
+				font-size: 36px;
+				line-height: 68px;
+				color: #333333;
+			}
+		}
+		.choose-btn{
+			position: absolute;
+			left: 54px;
+			top: 466px;
+			.btn-man{
+				background: url(../img/choose_boy.png) no-repeat 0 0 /cover;
+				width: width(../img/choose_boy.png);
+				height: height(../img/choose_boy.png);
+				position: absolute;
+				left: 50px;
+			}
+			.btn-woman{
+				background: url(../img/choose_girl.png) no-repeat 0 0 /cover;
+				width: width(../img/choose_girl.png);
+				height: height(../img/choose_girl.png);
+				position: absolute;
+				left: 328px;
+			}
+		}
+	}
+	.main{
+		display: none;
+		background: url(../img/mainscene_bg.png) no-repeat 0 0 / cover;
+		.share-btn{
+			background: url(../img/share_btn.png) no-repeat 0 0 /cover;
+			width: width(../img/share_btn.png);
+			height: height(../img/share_btn.png);
+			position: absolute;
+			right: 35px;
+			top: 40px;
+		}
+		.person{
+			background: url(../img/ms_taijian.png) no-repeat 0 0 /cover;
+			width: 286px;
+			height: 542px;
+			position: absolute;
+			left: 148px;
+			bottom: 255px;
+			animation: personShakeAnimation 1s steps(2,end) infinite;
+		}
+		.desk{
+			background: url(../img/mainscene_table.png) no-repeat 0 0 /cover;
+			width: width(../img/mainscene_table.png);
+			height: height(../img/mainscene_table.png);
+			position: absolute;
+			left: 0;
+			bottom: 260px;
+		}
+		.btns{
+			.btn{	
+				width:90px;
+				height:141px;
+				position: absolute;	
+				bottom: 0;
+			}
+			.btn-zhong{
+				background: url(../img/mainscene_zhong.png) no-repeat 0 0 /cover;
+				left: 0;
+			}
+			.btn-wen{
+				background: url(../img/mainscene_wen.png) no-repeat 0 0 /cover;
+				left: 90px;
+			}
+			.btn-rui{
+				background: url(../img/mainscene_rui.png) no-repeat 0 0 /cover;
+				left: 180px;
+			}
+			.btn-xing{
+				background: url(../img/mainscene_xing.png) no-repeat 0 0 /cover;
+				left: 270px;
+			}
+			.btn-zhi{
+				background: url(../img/mainscene_zhi.png) no-repeat 0 0 /cover;
+				left: 360px;
+			}
+			.btn-upgradePerson{
+				background: url(../img/mainscene_upgrade.png) no-repeat 0 0 /cover;
+				width: width(../img/mainscene_upgrade.png);
+				height: height(../img/mainscene_upgrade.png);
+				position: absolute;
+				right: 10px;
+				bottom: 5px;
+			}
+
+		}
+	}
+    .answer{
+    	display: none;
+    	background: url(../img/answer_bg.png) no-repeat 0 0 /cover;
+    	.answer-box{
+    		.title{
+				font-size: 30px;
+				line-height: 62px;
+				color: #000;
+				width: 536px;
+				position: absolute;
+				left: 50px;
+				top: 150px;
+    		}
+    		.result-options{
+    			position: absolute;
+    			left: 50px;
+    			top:354px;
+    			.opt{
+    				position: relative;
+    				width:536px;
+    				height: 113px;
+    				border-radius: 7px;
+    				background-color: #e0ded7;
+    				padding: 30px 0 0 22px;
+    				margin-bottom: 40px;
+    				box-sizing: border-box;
+    				span{
+						font-size: 26px;
+    				}
+    				.animation-correct{
+    					display: none;
+    					background: url(../img/answer_correct.png) no-repeat 0 0 /cover;
+    					width: width(../img/answer_correct.png);
+    					height: height(../img/answer_correct.png);
+    					position: absolute;
+    					right: 0;
+    					bottom: 25px;
+    				}
+    				.animation-wrong{
+    					display: none;
+						background: url(../img/answer_wrong.png) no-repeat 0 0 /cover;
+    					width: width(../img/answer_wrong.png);
+    					height: height(../img/answer_wrong.png);
+    					position: absolute;
+    					right: 0;
+    					bottom: 25px;
+    				}
+    			}
+    		}
+    		.num-count{
+    			position: absolute;
+    			left: 0;
+    			bottom: 150px;
+    			width: 100%;
+    			text-align: center;
+    			font-size: 36px;
+    			color: #333;
+    			span{
+					color: #da464d;
+    			}
+    		}
+    	}
+        .result-box{
+        	display: none;
+        	width: 100%;
+        	height: 100%;
+        	position: absolute;
+        	left: 0;
+        	top: 0;
+        	background-color: rgba(255,255,255,0.6);
+        	z-index: 2;
+        	.result-wrap{
+        		background: url(../img/answer_success_bg.png) no-repeat 0 0 /cover;
+        		width: width(../img/answer_success_bg.png);
+        		height: height(../img/answer_success_bg.png);
+        		position: absolute;
+        		left: 31px;
+        		top: 288px;
+        		.title{
+					font-size: 75px;
+					color: #ce3e3e;
+					margin-top: 116px;
+					text-align: center;
+					line-height: 71px;
+        		}
+        		.result-flag{
+        			background: url(../img/answer_cat.png) no-repeat 0 0/cover;
+					width:width('../img/answer_cat.png');
+					height: height('../img/answer_cat.png');
+					margin: 0 auto;
+        		}
+        		.result-text{
+					text-align: center;
+					width: 100%;
+        		}
+        	}
+        }
+        .result-box.tips_failed .result-wrap{
+			background: url(../img/answer_failed_bg.png) no-repeat 0 0 /cover;
+    		width: width(../img/answer_failed_bg.png);
+    		height: height(../img/answer_failed_bg.png);
+    		position: absolute;
+    		left: 31px;
+    		top: 288px;
+			.result-text{
+				margin-top: 165px;
+			}
+		}
+		.result-renwu-box{
+			display: none;
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			background-color: #f2f1ec;
+			z-index: 2;
+			.result-wrap{
+				background: url(../img/pop_renwu_bg.png) no-repeat 0 0 /cover;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				.title{
+					color: #ce3e3e;
+					font-size: 75px;
+					position: absolute;
+					top: 339px;
+					text-align: center;
+					width: 100%;
+				}
+				.result-text{
+					color: #333;
+					font-size: 24px;
+					position: absolute;
+					top: 452px;
+					text-align:center;
+					width: 100%;
+				}
+				.result-flag{
+					background: url(../img/upgrade_btn.png) no-repeat 0 0 /cover;
+					width: width(../img/upgrade_btn.png);
+					height: height(../img/upgrade_btn.png);
+					position: absolute;
+					left: 194px;
+					top:539px;
+					color:#fff;
+					font-size: 60px;
+					text-align: center;
+				}
+			}
+		}
+    }
+}
