@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, viewport-fit=cover"">  
+<link rel="stylesheet" type="text/css" href="./dajia/public/css/index.css?v=5358c7b26d">
+<script src="./dajia/assets/js/jquery.js"></script>  <!-- jquery,操作页面上html元素 -->
+<script src="./dajia/assets/js/velocity.js"></script> <!-- 动画库 -->
+<script src="./dajia/assets/js/velocity.ui.js"></script> 
+<head>
+    <title>大家</title>
+</head>
+<body>
+
+    <!-- 加载页面 -->
+    <div class="loading">
+        <div class="loading-text-wrap">
+            <div class="text">建议在WIFI下观看，正在加载中...</div>
+            <div class="percent"></div>
+        </div>
+        <div class="cloud"></div>
+        <div class="cp">出品：xxx公司出品</div>
+    </div>
+    
+    <div class="item-wrap">
+        <ul>
+            <li class="cover">
+                <div class="cover-text"></div>
+            </li>
+            <li class="choose">
+                <div class="choose-text">
+                    <p>好不容易穿越，<br>你可以选择一次重新做人的机会：</p>
+                </div>
+                <div class="choose-btn">
+                    <div class="btn-man ac_choose"></div>
+                    <div class="btn-woman ac_choose"></div>
+                </div>
+            </li>
+            <li class="main">
+                <div class="share-btn"></div>
+                <div class="person"></div>
+                <div class="desk"></div>
+                <div class="btns">
+                    <div class="btn btn-zhong ac_choose"></div>
+                    <div class="btn btn-wen ac_choose"></div>
+                    <div class="btn btn-rui ac_choose"></div>
+                    <div class="btn btn-xing ac_choose"></div>
+                    <div class="btn btn-zhi ac_choose"></div>
+                    <div class="btn-upgradePerson ac_choose"></div>
+                </div>
+            </li>
+            <li class="answer">
+                <div class="answer-box">
+                    <div class="title">关于黄圣依和杨子的感情，以下哪种观点没有在《大家》提起过？</div>
+                    <div class="result-options">
+                        <div class="opt current">
+                            <span>A:选项a</span>
+                            <div class="animation-correct"></div>
+                            <div class="animation-wrong"></div>
+                        </div>
+                        <div class="opt">
+                            <span>B:选项b</span>
+                            <div class="animation-correct"></div>
+                            <div class="animation-wrong"></div>
+                        </div>
+                        <div class="opt">
+                            <span>C:选项c</span>
+                            <div class="animation-correct"></div>
+                            <div class="animation-wrong"></div>
+                        </div>
+                    </div>
+                    <div class="num-count"><span>1</span>/3</div>
+                </div>
+                <div class="result-box tips_success">
+                    <div class="result-wrap">
+                        <div class="title">解锁成功</div>
+                        <div class="result-flag"></div>
+                        <div class="result-text">获得xxx</div>
+                    </div>
+                </div>
+                <div class="result-box tips_failed">
+                    <div class="result-wrap">
+                        <div class="title">解锁失败</div>
+                        <div class="result-text">您与道具擦肩而过，再试一次吧！</div>
+                    </div>
+                </div>
+                <div class="result-renwu-box">
+                    <div class="result-wrap">
+                        <div class="title">答对4题</div>
+                        <div class="result-text">恭喜你，人物形象升级为</div>
+                        <div class="result-flag">贵妃</div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    
+
+    
+<script type="text/javascript">
+        
+$(function(){
+
+    /********云朵循环*********/ 
+
+    $('.cloud').velocity(
+        {
+            'left':'-1000px'
+        },
+        {
+            duration:10000,
+            loop:true
+        }
+    );
+
+
+
+    /********图片加载*********/ 
+
+    var pics = ["./dajia/public/img/answer_allopen_bg.png","./dajia/public/img/answer_bg.jpg","./dajia/public/img/answer_bg.png","./dajia/public/img/answer_cat.png","./dajia/public/img/answer_correct.png","./dajia/public/img/answer_failed_bg.png","./dajia/public/img/answer_rui.png","./dajia/public/img/answer_success_bg.png","./dajia/public/img/answer_wen.png","./dajia/public/img/answer_wrong.png","./dajia/public/img/answer_zhi.png","./dajia/public/img/answer_zhong.png","./dajia/public/img/choose_bg.png","./dajia/public/img/choose_boy.png","./dajia/public/img/choose_girl.png","./dajia/public/img/cover_bg.png","./dajia/public/img/cover_clou1.png","./dajia/public/img/cover_clou2.png","./dajia/public/img/cover_clou3.png","./dajia/public/img/cover_clou4.png","./dajia/public/img/cover_text.png","./dajia/public/img/leaf1.png","./dajia/public/img/leaf2.png","./dajia/public/img/leaf3.png","./dajia/public/img/loading.png","./dajia/public/img/loading_bg.png","./dajia/public/img/loading_cloud.png","./dajia/public/img/mainscene_bg.png","./dajia/public/img/mainscene_rui.png","./dajia/public/img/mainscene_rui_bi.png","./dajia/public/img/mainscene_table.png","./dajia/public/img/mainscene_tips1.png","./dajia/public/img/mainscene_tips2.png","./dajia/public/img/mainscene_tips3.png","./dajia/public/img/mainscene_tips4.png","./dajia/public/img/mainscene_upgrade.png","./dajia/public/img/mainscene_wen.png","./dajia/public/img/mainscene_wen_zhi.png","./dajia/public/img/mainscene_xing.png","./dajia/public/img/mainscene_xing_cat.png","./dajia/public/img/mainscene_zhi.png","./dajia/public/img/mainscene_zhi_hua.png","./dajia/public/img/mainscene_zhong.png","./dajia/public/img/mainscene_zhong_bian.png","./dajia/public/img/me_bottom.png","./dajia/public/img/me_close.png","./dajia/public/img/memorial_1.png","./dajia/public/img/memorial_2.png","./dajia/public/img/memorial_3.png","./dajia/public/img/memorial_4.png","./dajia/public/img/memorial_bg.png","./dajia/public/img/memorial_up_btn.png","./dajia/public/img/ms_chakanzouzhang.png","./dajia/public/img/ms_guifei.png","./dajia/public/img/ms_huangdi.png","./dajia/public/img/ms_nvwang.png","./dajia/public/img/ms_taijian.png","./dajia/public/img/ms_xianling.png","./dajia/public/img/ms_xiaojie.png","./dajia/public/img/ms_xiaozhu.png","./dajia/public/img/ms_yatou.png","./dajia/public/img/ms_yayi.png","./dajia/public/img/ms_zaixiang.png","./dajia/public/img/pop_renwu_bg.png","./dajia/public/img/share.jpg","./dajia/public/img/share.png","./dajia/public/img/share_btn.png","./dajia/public/img/upgrade_btn.png"];
+    var pics_length = pics.length;
+
+    var index = 0;
+
+    for(var i=0;i<pics_length;i++){
+        var img = new Image();
+        img.src = pics[i];
+        img.onload = function(){
+            index++;
+            var percent = Math.floor(index/pics_length*100);
+            $('.loading-text-wrap .percent').text(percent+'%');
+            if(percent == 100){
+                setTimeout(function(){
+                    $('.loading').hide();
+                    $('.cover').show();
+                    setTimeout(function(){
+                        $('.cover').hide();
+                        $('.choose').show();
+                    },9000)
+                },1000)
+            }
+        }
+    }
+
+
+    /********选择男女*********/ 
+
+    $('.choose,.main').on('click','.ac_choose',function(){
+        var $t = $(this);
+        var $li = $(this).closest('li');
+        var index = $li.index();
+        console.log(index);
+        $li.next().show();
+        $li.closest('ul').css({'transform':'translateY('+-$(window).height()*index+'px)'});
+
+     });
+
+    /********答题数据渲染并判断对错*********/ 
+
+    var data = {
+        question:"1、如果《大家》的文章每被阅读一次，就给你一元钱，你现在是个什么级别的富人？",
+        options:{
+            A:'A、亿万富翁',
+            B:'B、百万富翁',
+            C:'C、穷光蛋'
+        },
+        correct:"A"
+    }
+
+    $('.answer-box .title').text(data.question); //把数据中的问题渲染到页面中
+    
+    var map = {0:'A',1:'B',2:'C'}
+    $('.answer-box .opt span').each(function(index,item){
+        var $item = $(item);
+        $item.text(data.options[map[index]]);
+        $item.closest('.opt').data('opt',map[index]);
+    })
+
+    $('.answer-box').data('correct',data.correct);  
+
+    $('.answer-box .opt').on('click',function(){
+        if( $(this).data('opt') == $('.answer-box').data('correct') ){
+            $('.animation-correct',$(this)).velocity('fadeIn',{complete:function(){
+                $('.tips_success').velocity('fadeIn',{complete:function(){
+                    setTimeout(function(){
+                        $('ul').css({'transform':'translateY('+-$(window).height()+'px)'})
+                        $('.tips_success,.animation-correct').hide();
+                    },1000)
+                }})
+            }});
+        }else{
+            $('.animation-wrong',$(this)).velocity('fadeIn',{complete:function(){
+                $('.tips_failed').velocity('fadeIn',{complete:function(){
+                    setTimeout(function(){
+                        $('ul').css({'transform':'translateY('+-$(window).height()+'px)'})
+                        $('.tips_failed,.animation-wrong').hide();
+                    },1000)
+                }})
+            }});
+        }
+    })
+
+
+})
+    </script>
+
+    
+</body>
+</html>
